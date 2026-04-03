@@ -1,5 +1,5 @@
 [default]
-path = "/home/sky/wp"
+path = "/home/sky/.config/wp"
 duration = "30m"
 sorting = "random"
 apply-shadow = true 
