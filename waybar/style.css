@@ -1,0 +1,17 @@
+* {
+    font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
+
+/* This makes the bar transparent and cleaner */
+window#waybar {
+    background: rgba(43, 48, 59, 0.5); /* Semi-transparent dark gray */
+    border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+/* This fixes the "boxy" high-contrast look in your photo */
+#cpu, #memory, #battery, #clock {
+    padding: 0 10px;
+    background: transparent; /* Removes those solid color blocks */
+}
