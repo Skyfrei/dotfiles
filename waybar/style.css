@@ -1,17 +1,38 @@
 * {
-    font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+    /* Adding 'Symbols Nerd Font' as a fallback specifically for icons */
+    font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font Mono", "Font Awesome 6 Free", sans-serif;
     font-size: 13px;
+    border: none;
+    border-radius: 0;
 }
 
-/* This makes the bar transparent and cleaner */
 window#waybar {
     background: rgba(43, 48, 59, 0.5); /* Semi-transparent dark gray */
-    border-bottom: 3px solid rgba(255, 255, 255, 0.1);
     color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
 }
 
-/* This fixes the "boxy" high-contrast look in your photo */
-#cpu, #memory, #battery, #clock {
+/* Grouping all modules to have the same spacing and no background */
+#cpu, #memory, #temperature, #disk, #clock {
+    font-family: "JetBrainsMono Nerd Font", "JetBrainsMono NF", "Symbols Nerd Font", sans-serif;
     padding: 0 10px;
-    background: transparent; /* Removes those solid color blocks */
+    background: transparent;
+}
+
+/* Extra insurance: make sure memory is using the right font */
+#memory {
+    font-family: "JetBrainsMono Nerd Font";
+    padding: 0 10px;
+}
+
+/* Optional: Slight highlight on the clock to make it stand out */
+#clock {
+    font-weight: bold;
+    color: #89b4fa; /* A nice soft blue */
+}
+
+/* If a component gets too hot, turn it red */
+#temperature.critical {
+    color: #f38ba8;
 }

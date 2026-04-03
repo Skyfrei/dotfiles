@@ -1,0 +1,28 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "modules-right": ["cpu", "memory", "temperature", "disk", "clock"],
+
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": false
+    },
+    "memory": {
+      "interval": 30,
+      "format": "󰍛 {}%",
+      "max-length": 10
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format": " {temperatureC}°C"
+    },
+    "disk": {
+        "format": "󰋊 {percentage_used}%",
+        "path": "/"
+    },
+    "clock": {
+        "format": " {:%H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    }
+}
