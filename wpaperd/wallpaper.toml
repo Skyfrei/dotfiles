@@ -1,0 +1,5 @@
+[default]
+path = "/home/sky/wp"
+duration = "30m"
+sorting = "random"
+apply-shadow = true 
