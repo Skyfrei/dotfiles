@@ -1,8 +1,7 @@
 set -gx VIMRUNTIME "$HOME/code/neovim/runtime"
 set fish_greeting
+set -gx SSLKEYLOGFILE "/home/sky/code/granblue-fantasy-tool/gbf_keys.log"
 
-### Path Update ###
-# fish_add_path is smart; it checks if the path exists and avoids duplicates
 fish_add_path "$HOME/code/neovim/build/bin"
 
 if status is-login
@@ -27,3 +26,5 @@ function fish_prompt
     set -l normal (set_color normal)
     echo -n "["$user_color$USER$normal"@(hostname) "(prompt_pwd)"]\$ "
 end
+
+
