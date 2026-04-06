@@ -24,7 +24,7 @@ alias grep="grep --color=auto"
 function fish_prompt
     set -l user_color (set_color green)
     set -l normal (set_color normal)
-    echo -n "["$user_color$USER$normal"@(hostname) "(prompt_pwd)"]\$ "
+    echo -n "["$user_color$USER$normal"@"$hostname (prompt_pwd)"]\$ "
 end
 
 
