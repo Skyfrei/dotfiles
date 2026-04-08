@@ -3,84 +3,80 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/nvim-cmp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      "L3MON4D3/LuaSnip",
-      "saadparwaiz1/cmp_luasnip",
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      "saghen/blink.cmp",
     },
-
     config = function()
-        local lsp = vim.lsp
-        local buffer_stack = {}
-        local on_attach =  function(client, bufnr)
-            local opts = {buffer = bufnr}
-            vim.keymap.set('n', 'gd', lsp.buf.declaration, opts)
-            vim.keymap.set('n', 'gD', lsp.buf.definition, opts)
-        end
+      -- 1. Setup Mason as usual
+      require("mason").setup()
+      require("mason-lspconfig").setup({
+        ensure_installed = { "clangd" },
+      })
 
-        -- show error window 
-        vim.api.nvim_create_autocmd("DiagnosticChanged", {
-            buffer = bufnr,
-            callback = function()
-                local errors = vim.diagnostic.get(bufnr, { severity = vim.diagnostic.severity.ERROR })
-                if #errors > 0 then
-                    vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR, open = false })
-                    local current_win = vim.api.nvim_get_current_win()
-                    vim.cmd("botright copen")
-                    vim.api.nvim_set_current_win(current_win)
-                else
-                    vim.cmd("cclose")
-                end
-            end,
-        })
-        -- close the error window when :q
-       vim.api.nvim_create_autocmd("WinEnter", {
-           callback = function()
-               if vim.fn.winnr('$') == 1 and vim.bo.buftype == "quickfix" then
-                   vim.cmd("quit")
-               end
-           end,
-       })
+      -- 2. Define your shared settings (on_attach and capabilities)
+      local blink = require('blink.cmp')
+      
+      local on_attach = function(client, bufnr)
+        local opts = { buffer = bufnr }
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+      end
 
-        local lsp_table = {'clangd', 'rust_analyzer'}
- 
-        for _, server_name in ipairs(lsp_table) do
-            local server_config = {
-                on_attach = on_attach,
-            }
-            if server_name == 'clangd' then
-                server_config.init_options = {
-                    fallbackFlags = { "-std=c++23", "-I." },
-                }
-            end 
-            lsp.config[server_name] = server_config 
-            
-            lsp.enable(server_name)
+      vim.lsp.config('clangd', {
+        cmd = { "clangd", "--background-index", "--clang-tidy", "--compile-commands-dir=build" },
+        filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+        root_markers = { "compile_commands.json", "compile_flags.txt", ".git" },
+        init_options = {
+          fallbackFlags = { "-std=c++23", "-I." },
+        },
+        -- Attach your logic here
+        on_attach = on_attach,
+        capabilities = blink.get_lsp_capabilities(),
+      })
 
-        end
+      -- 4. Enable the server
+      vim.lsp.enable('clangd')
 
+      -- 5. Diagnostic Quickfix Autocmd (Fixed for Neovim 0.11+)
+      vim.api.nvim_create_autocmd("DiagnosticChanged", {
+        callback = function()
+          local errors = vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
+          if #errors > 0 then
+            vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR, open = false })
+            local current_win = vim.api.nvim_get_current_win()
+            vim.cmd("botright copen")
+            vim.api.nvim_set_current_win(current_win)
+          else
+            vim.cmd("cclose")
+          end
+        end,
+      })
 
-        local cmp = require('cmp')
-        local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-        cmp.setup({
-            snippet = {
-                expand = function(args)
-                    require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-                end,
-            },
-            mapping = cmp.mapping.preset.insert({
-                ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
-                ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
-            }),
-            sources = cmp.config.sources({
-                { name = 'nvim_lsp' },
-            })
-        })
-
+      -- Quickfix auto-quit
+      vim.api.nvim_create_autocmd("WinEnter", {
+        callback = function()
+          if vim.fn.winnr('$') == 1 and vim.bo.buftype == "quickfix" then
+            vim.cmd("quit")
+          end
+        end,
+      })
     end
+  },
+
+  {
+    'saghen/blink.cmp',
+    version = '*',
+    opts = {
+      keymap = { preset = 'default',
+        ['<C-j>']={'select_next'},
+        ['<C-k>']={'select_prev'},
+      
+      },
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+      },
+    },
   },
 }
