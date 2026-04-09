@@ -4,14 +4,17 @@ return {
   opts = {
     modes = {
       diagnostics = {
-        -- Disable grouping items by filename
+        filter = {severity = vim.diagnostic.severity.ERROR},
+        focus = false,
+        win = { size = 5 },
         groups = {},
-        -- Format the output to only show the severity icon and the message
-        -- This strips away any inline file names, line numbers, or paths
         format = "{severity_icon} {message:md}",
       },
       symbols = {
         groups = {},
+        win = {
+          position = "left",
+        },
         format = "{kind_icon} {symbol.name}",
       },
     },

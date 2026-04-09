@@ -42,20 +42,24 @@ return {
       -- 5. Diagnostic Quickfix Autocmd (Fixed for Neovim 0.11+)
       vim.api.nvim_create_autocmd("DiagnosticChanged", {
         callback = function()
-          local trouble = require("trouble")
-          local errors = vim.diagnostic.get(0, {severity = vim.diagnostic.severity.ERROR})
-          if #errors > 0 then
-            trouble.open({ mode = "diagnostics", filter = {severity = vim.diagnostic.severity.ERROR} })
-            win = { size = 5 }
-            vim.cmd("wincmd p")
-          else
-            if trouble.is_open() then
-              trouble.close()
+          -- vim.schedule defers the function until the next Neovim event loop tick.
+          -- This ensures Trouble has finished updating its internal lists before we open it!
+          vim.schedule(function()
+            local trouble = require("trouble")
+            local errors = vim.diagnostic.get(0, {severity = vim.diagnostic.severity.ERROR})
+            
+            if #errors > 0 then
+              if not trouble.is_open({ mode = "diagnostics" }) then
+                trouble.open({ mode = "diagnostics" })
+              end
+            else
+              if trouble.is_open({ mode = "diagnostics" }) then
+                trouble.close({ mode = "diagnostics" })
+              end
             end
-          end
+          end)
         end,
       })
-
       -- Quickfix auto-quit
       vim.api.nvim_create_autocmd("WinEnter", {
         callback = function()

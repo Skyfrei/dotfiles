@@ -42,8 +42,6 @@ vim.keymap.set("n", "<C-a>", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-x>", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-j>", "<C-O>", {desc = "Jump behind in the buffer"})
 vim.keymap.set("n", "<C-k>", "<C-I>", {desc = "Jump ahead in the buffer"})
-vim.keymap.set("v", "<leader>x", ":lua<CR>", { desc = "Run lua in visual" })
-
 
 
 
@@ -51,4 +49,4 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevelstart = 99
 
-vim.keymap.set('n', 'f', 'za', { noremap = true }) -- Toggle fold
+vim.keymap.set('n', '<Tab>', 'za', { noremap = true }) -- Toggle fold
