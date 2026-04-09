@@ -42,14 +42,16 @@ return {
       -- 5. Diagnostic Quickfix Autocmd (Fixed for Neovim 0.11+)
       vim.api.nvim_create_autocmd("DiagnosticChanged", {
         callback = function()
-          local errors = vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
+          local trouble = require("trouble")
+          local errors = vim.diagnostic.get(0, {severity = vim.diagnostic.severity.ERROR})
           if #errors > 0 then
-            vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR, open = false })
-            local current_win = vim.api.nvim_get_current_win()
-            vim.cmd("botright copen")
-            vim.api.nvim_set_current_win(current_win)
+            trouble.open({ mode = "diagnostics", filter = {severity = vim.diagnostic.severity.ERROR} })
+            win = { size = 5 }
+            vim.cmd("wincmd p")
           else
-            vim.cmd("cclose")
+            if trouble.is_open() then
+              trouble.close()
+            end
           end
         end,
       })
