@@ -1,7 +1,6 @@
 {
+  "asmview.nvim": { "branch": "main", "commit": "5c9f1465bd2256af569160b34e967c99d7e7a0de" },
   "blink.cmp": { "branch": "main", "commit": "78336bc89ee5365633bcf754d93df01678b5c08f" },
-  "compiler-explorer.nvim": { "branch": "master", "commit": "523c6a7a3d8c034b421a71eb20b0da75b0b16f62" },
-  "dressing.nvim": { "branch": "master", "commit": "2d7c2db2507fa3c4956142ee607431ddb2828639" },
   "gruber-darker.nvim": { "branch": "main", "commit": "aba065c3a79b58cc3863d5c9db319255abd1258a" },
   "lazy.nvim": { "branch": "main", "commit": "85c7ff3711b730b4030d03144f6db6375044ae82" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "63a3c6a80538de1003373a619e29aeda27809ad3" },

@@ -15,7 +15,7 @@ return {
         win = {
           position = "left",
         },
-        format = "{kind_icon} {symbol.name}",
+        format = "{kind_icon} {symbol.name} {symbol.detail:comment}",
       },
     },
   },
