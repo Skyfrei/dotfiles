@@ -25,9 +25,14 @@ return {
       end
 
       vim.lsp.config('clangd', {
-        cmd = { "clangd", "--background-index", "--clang-tidy", "--compile-commands-dir=build" },
-        filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
-        root_markers = { "compile_commands.json", "compile_flags.txt", ".git" },
+        cmd = { "clangd",
+                "--background-index=false",
+                "--clang-tidy",
+                "--compile-commands-dir=build",
+                "--header-insertion=never",
+              },
+        filetypes = { "c", "cpp", "proto" },
+        root_markers = { "compile_commands.json", ".git" },
         init_options = {
           fallbackFlags = { "-std=c++23", "-I." },
         },
