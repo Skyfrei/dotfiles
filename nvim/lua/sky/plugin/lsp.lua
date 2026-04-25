@@ -3,20 +3,12 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
+
       "saghen/blink.cmp",
+      { "folke/lazydev.nvim", ft = "lua", opts = {} },
     },
     config = function()
-      -- 1. Setup Mason as usual
-      require("mason").setup()
-      require("mason-lspconfig").setup({
-        ensure_installed = { "clangd" },
-      })
-
-      -- 2. Define your shared settings (on_attach and capabilities)
       local blink = require('blink.cmp')
-      
       local on_attach = function(client, bufnr)
         local opts = { buffer = bufnr }
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
@@ -31,7 +23,7 @@ return {
                 "--compile-commands-dir=build",
                 "--header-insertion=never",
               },
-        filetypes = { "c", "cpp", "proto" },
+        filetypes = { "c", "cpp" },
         root_markers = { "compile_commands.json", ".git" },
         init_options = {
           fallbackFlags = { "-std=c++23", "-I." },
@@ -41,8 +33,14 @@ return {
         capabilities = blink.get_lsp_capabilities(),
       })
 
+      vim.lsp.config('lua_ls', {
+        on_attach = on_attach,
+        capabilities = blink.get_lsp_capabilities(),
+      })
+
       -- 4. Enable the server
       vim.lsp.enable('clangd')
+      vim.lsp.enable('lua_ls')
 
       -- 5. Diagnostic Quickfix Autocmd (Fixed for Neovim 0.11+)
       vim.api.nvim_create_autocmd("DiagnosticChanged", {
