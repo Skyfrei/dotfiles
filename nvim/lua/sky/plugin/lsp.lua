@@ -42,27 +42,13 @@ return {
       vim.lsp.enable('clangd')
       vim.lsp.enable('lua_ls')
 
-      -- 5. Diagnostic Quickfix Autocmd (Fixed for Neovim 0.11+)
-      vim.api.nvim_create_autocmd("DiagnosticChanged", {
-        callback = function()
-          -- vim.schedule defers the function until the next Neovim event loop tick.
-          -- This ensures Trouble has finished updating its internal lists before we open it!
-          vim.schedule(function()
-            local trouble = require("trouble")
-            local errors = vim.diagnostic.get(0, {severity = vim.diagnostic.severity.ERROR})
-            
-            if #errors > 0 then
-              if not trouble.is_open({ mode = "diagnostics" }) then
-                trouble.open({ mode = "diagnostics" })
-              end
-            else
-              if trouble.is_open({ mode = "diagnostics" }) then
-                trouble.close({ mode = "diagnostics" })
-              end
-            end
-          end)
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = { "*.c", "*.cpp", "*.h", "*.hpp" },
+        callback = function(args)
+          vim.lsp.buf.format({ bufnr = args.buf })
         end,
       })
+
       -- Quickfix auto-quit
       vim.api.nvim_create_autocmd("WinEnter", {
         callback = function()
