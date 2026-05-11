@@ -14,14 +14,14 @@ window#waybar {
 }
 
 /* Grouping all modules to have the same spacing and no background */
-#cpu, #memory, #temperature, #disk, #clock {
+#cpu, #temperature, #disk, #clock {
     font-family: "JetBrainsMono Nerd Font", "JetBrainsMono NF", "Symbols Nerd Font", sans-serif;
     padding: 0 10px;
     background: transparent;
 }
 
 /* Extra insurance: make sure memory is using the right font */
-#memory {
+#disk {
     font-family: "JetBrainsMono Nerd Font";
     padding: 0 10px;
 }

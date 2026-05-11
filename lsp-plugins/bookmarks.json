@@ -1,0 +1,16 @@
+/*
+ * This file contains list of bookmarked directories.
+ * 
+ */
+[
+    {
+        "path": "/home/sky",
+        "name": "Home",
+        "origin": ["lsp", "qt5"]
+    },
+    {
+        "path": "/home/sky/Downloads",
+        "name": "Downloads",
+        "origin": ["lsp", "qt5"]
+    }
+]

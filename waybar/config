@@ -8,6 +8,10 @@
         "format": " {usage}%",
         "tooltip": false
     },
+    "disk": {
+        "path": "/home",
+        "format": "󰋊 {percentage_used}%"
+    },
     "memory": {
       "interval": 30,
       "format": "󰍛 {}%",
@@ -16,10 +20,6 @@
     "temperature": {
         "critical-threshold": 80,
         "format": " {temperatureC}°C"
-    },
-    "disk": {
-        "format": "󰋊 {percentage_used}%",
-        "path": "/"
     },
     "clock": {
         "format": "{:%d %B  %H:%M}"
