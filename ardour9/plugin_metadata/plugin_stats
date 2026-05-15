@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PluginStats>
-  <Plugin type="LV2" id="http://lsp-plug.in/plugins/lv2/impulse_responses_stereo" lru="1778453683" use-count="2"/>
+  <Plugin type="LV2" id="http://lsp-plug.in/plugins/lv2/impulse_responses_stereo" lru="1778619356" use-count="4"/>
   <Plugin type="LV2" id="http://lsp-plug.in/plugins/lv2/impulse_responses_mono" lru="1778453254" use-count="1"/>
   <Plugin type="LV2" id="http://lsp-plug.in/plugins/lv2/graph_equalizer_x32_stereo" lru="1778451915" use-count="1"/>
+  <Plugin type="LV2" id="http://lsp-plug.in/plugins/lv2/gate_mono" lru="1778619282" use-count="1"/>
   <Plugin type="LV2" id="http://lsp-plug.in/plugins/lv2/compressor_mono" lru="1778451932" use-count="1"/>
   <Plugin type="LV2" id="http://lsp-plug.in/plugins/lv2/art_delay_stereo" lru="1778448103" use-count="1"/>
-  <Plugin type="LV2" id="http://github.com/mikeoliphant/neural-amp-modeler-lv2" lru="1778453709" use-count="4"/>
+  <Plugin type="LV2" id="http://github.com/mikeoliphant/neural-amp-modeler-lv2" lru="1778619295" use-count="8"/>
 </PluginStats>

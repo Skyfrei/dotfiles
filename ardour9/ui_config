@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Ardour>
   <UI>
+    <Option name="color-file" value="recbox"/>
     <Option name="font-scale" value="153600"/>
+    <Option name="mixer-element-visibility" value="Input,PhaseInvert,RecMon,Output"/>
+    <Option name="show-track-meters" value="0"/>
+    <Option name="show-toolbar-recpunch" value="0"/>
+    <Option name="show-secondary-clock" value="0"/>
     <Option name="recent-session-sort" value="1"/>
+    <Option name="action-table-columns" value="0"/>
+    <Option name="use-wm-visibility" value="0"/>
     <Option name="freesound-dir" value="/home/sky/.cache/ardour9/freesound"/>
   </UI>
   <Canvas>

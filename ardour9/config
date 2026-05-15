@@ -3,12 +3,13 @@
   <Config>
     <Option name="capture-buffer-seconds" value="10"/>
     <Option name="playback-buffer-seconds" value="10"/>
+    <Option name="clicking" value="1"/>
     <Option name="default-session-parent-dir" value="/home/sky"/>
     <Option name="clip-library-dir" value="/home/sky/.local/share/sounds/clips"/>
     <Option name="edit-mode" value="Ripple"/>
     <Option name="plugin-cache-version" value="7002"/>
     <Option name="plugin-path-vst" value="/usr/local/lib/vst:/usr/lib/vst"/>
-    <Option name="plugin-path-lxvst" value="/usr/local/lib64/lxvst:/usr/local/lib/lxvst:/usr/lib64/lxvst:/usr/lib/lxvst:/usr/local/lib64/linux_vst:/usr/local/lib/linux_vst:/usr/lib64/linux_vst:/usr/lib/linux_vst:/usr/lib/vst:/usr/local/lib/vst"/>
+    <Option name="plugin-path-lxvst" value="/home/sky/.lv2:/usr/local/lib64/lxvst:/usr/local/lib/lxvst:/usr/lib64/lxvst:/usr/lib/lxvst:/usr/local/lib64/linux_vst:/usr/local/lib/linux_vst:/usr/lib64/linux_vst:/usr/lib/linux_vst:/usr/lib/vst:/usr/local/lib/vst"/>
     <Option name="plugin-path-vst3" value=""/>
   </Config>
   <Metadata/>
@@ -16,13 +17,13 @@
     <Keyboard copy-modifier="4" edit-button="3" edit-modifier="4" delete-button="3" delete-modifier="1" snap-modifier="8" snap-delta-modifier="67108936" insert-note-button="1" insert-note-modifier="4" constraint-modifier="1" slip-contents-modifier="5" trim-overlap-modifier="1" trim-anchored-modifier="5" fine-adjust-modifier="12" push-points-modifier="67108932" note-size-relative-modifier="1"/>
     <UI status-bar="Latency,PDC,Audio,Disk,DSP">
       <Window name="key-editor" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
-      <Window name="session-options-editor" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
+      <Window name="session-options-editor" visible="0" x-off="913" y-off="294" x-size="945" y-size="498"/>
       <Window name="speaker-config" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
       <Window name="about" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
       <Window name="add-routes" visible="0" x-off="-1" y-off="-1" x-size="856" y-size="521"/>
       <Window name="add-video" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
       <Window name="inspector" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
-      <Window name="audio-midi-setup" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
+      <Window name="audio-midi-setup" visible="0" x-off="1675" y-off="0" x-size="885" y-size="421"/>
       <Window name="video-export" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
       <Window name="script-manager" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
       <Window name="bundle-manager" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
@@ -31,29 +32,31 @@
       <Window name="big-transport" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
       <Window name="virtual-keyboard" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
       <Window name="library-downloader" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
-      <Window name="audio-connection-manager" visible="0" x-off="182" y-off="221" x-size="1137" y-size="873"/>
+      <Window name="audio-connection-manager" visible="0" x-off="182" y-off="221" x-size="1008" y-size="921"/>
       <Window name="midi-connection-manager" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
       <Window name="luawindow" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
-      <Window name="rtawindow" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
+      <Window name="rtawindow" visible="0" x-off="185" y-off="44" x-size="707" y-size="413"/>
       <Window name="idle-o-meter" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
       <Window name="io-plugins" visible="0" x-off="171" y-off="440" x-size="600" y-size="212"/>
       <Window name="plugin-manager" visible="0" x-off="94" y-off="233" x-size="1776" y-size="1030"/>
       <Window name="plugin-dsp-load" visible="0" x-off="508" y-off="650" x-size="639" y-size="378"/>
       <Window name="dsp-statistics" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
-      <Window name="transport-masters" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
+      <Window name="transport-masters" visible="0" x-off="0" y-off="470" x-size="2052" y-size="294"/>
       <Window name="RPM-78" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
-      <Window name="RPM-439" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
-      <Window name="P-439-2004" visible="0" x-off="0" y-off="73" x-size="1338" y-size="914" custom-ui="1"/>
-      <Window name="P-439-2124" visible="0" x-off="0" y-off="399" x-size="601" y-size="262" custom-ui="1"/>
-      <Window name="PM-439-2004" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
-      <Window name="PM-439-2124" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
+      <Window name="RPM-3437" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
+      <Window name="P-3437-4266" visible="0" x-off="345" y-off="321" x-size="1414" y-size="844" custom-ui="1"/>
+      <Window name="PM-3437-4266" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
+      <Window name="P-3437-4370" visible="0" x-off="314" y-off="594" x-size="1476" y-size="299" custom-ui="1"/>
+      <Window name="PM-3437-4370" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
+      <Window name="P-3437-4612" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="1"/>
+      <Window name="PM-3437-4612" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
       <Tearoffs>
         <monitor-section tornoff="0"/>
       </Tearoffs>
     </UI>
     <AudioMIDISetup>
       <EngineStates>
-        <State backend="JACK/Pipewire" driver="" device="HD-Audio Generic" input-device="" output-device="" sample-rate="48000" buffer-size="1024" n-periods="2" input-latency="0" output-latency="0" lm-input="" lm-output="" active="1" use-buffered-io="0" midi-option="" lru="1778454202">
+        <State backend="JACK/Pipewire" driver="" device="HD-Audio Generic" input-device="" output-device="" sample-rate="48000" buffer-size="1024" n-periods="2" input-latency="0" output-latency="0" lm-input="" lm-output="" active="1" use-buffered-io="0" midi-option="" lru="1778619578">
           <MIDIDevices/>
         </State>
         <State backend="ALSA" driver="" device="" input-device="MiniFuse 2" output-device="MiniFuse 2" sample-rate="48000" buffer-size="512" n-periods="2" input-latency="0" output-latency="0" lm-input="" lm-output="" active="0" use-buffered-io="0" midi-option="ALSA sequencer" lru="1778450911">
@@ -90,7 +93,7 @@
     <Protocol name="Tascam US-2400" active="0" session-state="0"/>
     <Protocol name="WebSockets Server (Experimental)" active="0" session-state="0"/>
   </ControlProtocols>
-  <TransportMasters current="MIDI Clock">
+  <TransportMasters current="JACK">
     <TransportMaster type="JACK" removeable="0" name="JACK" sclock_synced="0" collect="1" allowed_transport_requests=""/>
     <TransportMaster type="MTC" removeable="0" name="MTC" fr2997="0" sclock_synced="0" collect="1" allowed_transport_requests="">
       <Port/>
